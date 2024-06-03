@@ -1,4 +1,11 @@
 import Image from 'next/image'
+import SlideShow from '@/components/SlideShow'
+
+const imgs = [
+  { src: '/peixes.png' },
+  { src: '/mundo.png' },
+  { src: '/tartaruga.png' }
+]
 
 const Home = () => {
   return (
@@ -23,21 +30,21 @@ const Home = () => {
           priority={false}
         />
       </div>
-      <div className="bg-[#4e45ae]">
-        <Image
-          src="/top-waves.svg"
-          alt="Logo"
-          width={0}
-          height={0}
-          className="w-full"
-          priority={false}
-        />
-        <div className="flex justify-around items-center container mx-auto gap-32 py-10">
+      <div className="bg-[#5e50bb]">
+        {/*<Image*/}
+        {/*  src="/top-waves.svg"*/}
+        {/*  alt="Logo"*/}
+        {/*  width={0}*/}
+        {/*  height={0}*/}
+        {/*  className="w-full"*/}
+        {/*  priority={false}*/}
+        {/*/>*/}
+        <div className="flex justify-around items-center container mx-auto flex-col md:flex-row gap-32 py-10">
           <div>
-            <h1 className="text-4xl uppercase text-[#9e9dd6] pb-6">
+            <h1 className="text-lg lg:text-4xl uppercase text-[#9e9dd6] pb-6">
               bem vindo!
             </h1>
-            <p className="text-xl text-[#9e9dd6]">
+            <p className="text-md lg:text-xl text-[#9e9dd6]">
               NavGate é uma plataforma criada para trazer conhecimento e dar voz
               a pessoas que se importam com o futuro dos nossos oceanos,
               buscando, pelo meio da comunicação, restaurar e preservar o que
@@ -55,14 +62,9 @@ const Home = () => {
             />
           </div>
         </div>
-        <Image
-          src="/bottom-waves.svg"
-          alt="Logo"
-          width={0}
-          height={0}
-          className="w-full"
-          priority={false}
-        />
+      </div>
+      <div className="bg-[#26256c] py-10">
+        <SlideShow imagesArray={imgs} />
       </div>
     </main>
   )
