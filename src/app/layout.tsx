@@ -7,7 +7,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'NavGate',
-  description: 'Criado por Gabriel Leão'
+  description: 'Criado por Gabriel Leão',
+  icons: [{ type: 'link', rel: 'icon', url: '/logo.svg' }]
 }
 
 export default function RootLayout({

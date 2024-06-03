@@ -1,4 +1,4 @@
-## 👑 <a>Colaboradores do grupo RealTech</a>
+## 👑 <a>Colaboradores do grupo NavGate</a>
 
 <div>
 <p>
