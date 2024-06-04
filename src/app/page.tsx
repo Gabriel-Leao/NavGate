@@ -10,7 +10,7 @@ const imgs = [
 const Home = () => {
   return (
     <main>
-      <div className="bg-[#0e112c]">
+      <>
         <div className="flex justify-center pt-[30px] md:pt-[45px]">
           <Image
             src="/logo.svg"
@@ -29,8 +29,9 @@ const Home = () => {
           className="w-full"
           priority={false}
         />
-      </div>
-      <div className="bg-[#5e50bb]">
+      </>
+
+      <div className="bg-[#5e50bb] px-3 py-10">
         {/*<Image*/}
         {/*  src="/top-waves.svg"*/}
         {/*  alt="Logo"*/}

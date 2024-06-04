@@ -20,8 +20,8 @@ interface Article {
 const NewsPage = async () => {
   const articles = await getNews()
   return (
-    <div>
-      <div className="bg-[#0e112c]">
+    <main>
+      <>
         <div className="flex flex-col items-center gap-y-[35px] pt-[30px] md:pt-[45px]">
           <h1 className="uppercase text-white text-2xl md:text-5xl">
             portal de notícias
@@ -43,16 +43,18 @@ const NewsPage = async () => {
           className="w-full"
           priority={false}
         />
-      </div>
+      </>
 
-      <div className="bg-[#333191]">
+      <div className="bg-[#333191] px-3">
         <div className="container mx-auto py-20 grid md:grid-cols-2 lg:grid-cols-3 gap-10 ">
           {articles.map((article: Article) => (
             <div key={article.url}>
-              <img
+              <Image
                 src={article.urlToImage}
                 alt={article.title}
-                className="rounded-xl border-8 border-[#817fde] w-full h-[300px] object-cover mb-6"
+                width={300}
+                height={300}
+                className="rounded-xl border-8 border-[#121927] w-full h-[300px] object-cover mb-6"
               />
               <a
                 href={article.url}
@@ -64,7 +66,7 @@ const NewsPage = async () => {
           ))}
         </div>
       </div>
-    </div>
+    </main>
   )
 }
 

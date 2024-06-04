@@ -45,9 +45,9 @@ const SlideShow = ({ imagesArray }: SlideShowProps) => {
           src={activeImg.src}
           alt="activeImg"
           priority={true}
-          width={220}
-          height={220}
-          className="w-[220px] h-auto md:w-[500px] xl:w-[700px] rounded-lg"
+          width={250}
+          height={250}
+          className="w-[250px] h-auto md:w-[500px] xl:w-[700px] rounded-lg"
         />
       ) : (
         <p>Image invalida</p>
