@@ -7,9 +7,9 @@ const imgs = [
   { src: '/tartaruga.png' }
 ]
 
-const Home = () => {
+const Page = () => {
   return (
-    <main>
+    <main className="pt-16 bg-[#0e112c]">
       <>
         <div className="flex justify-center pt-[30px] md:pt-[45px]">
           <Image
@@ -71,4 +71,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Page

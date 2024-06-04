@@ -20,7 +20,7 @@ interface Article {
 const NewsPage = async () => {
   const articles = await getNews()
   return (
-    <main>
+    <main className="pt-16 bg-[#0e112c]">
       <>
         <div className="flex flex-col items-center gap-y-[35px] pt-[30px] md:pt-[45px]">
           <h1 className="uppercase text-white text-2xl md:text-5xl">
