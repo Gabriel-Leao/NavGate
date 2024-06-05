@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav className="bg-[#080918] opacity-90 fixed w-full xl:w-[50px] z-10">
       <ul className="flex justify-around py-5 xl:flex-col xl:h-screen items-center xl:justify-evenly xl:py-0">
         <li>
-          <Link href="/profile">
+          <Link href="/user">
             <Image
               src="/profile-icon.svg"
               alt=""

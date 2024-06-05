@@ -14,7 +14,7 @@ const Post = () => {
       <div className="bg-[#182641] w-full flex justify-between px-6 py-8 rounded-b-3xl">
         <div>
           <Image
-            src="profile-photo.svg"
+            src="/profile-photo.svg"
             alt=""
             width={50}
             height={50}
