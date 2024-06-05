@@ -35,7 +35,7 @@ const Page = () => {
           />
         </>
 
-        <div className="bg-gradient-to-b from-[#5e50bb] to-[#483d99] px-3 py-10">
+        <div className="bg-[#483d99] px-3 py-10">
           {/*<Image*/}
           {/*  src="/top-waves.svg"*/}
           {/*  alt="Logo"*/}
