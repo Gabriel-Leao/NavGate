@@ -31,11 +31,11 @@ const Page = () => {
             width={0}
             height={0}
             className="w-full"
-            priority={false}
+            priority={true}
           />
         </>
 
-        <div className="bg-[#5e50bb] px-3 py-10">
+        <div className="bg-gradient-to-b from-[#5e50bb] to-[#483d99] px-3 py-10">
           {/*<Image*/}
           {/*  src="/top-waves.svg"*/}
           {/*  alt="Logo"*/}

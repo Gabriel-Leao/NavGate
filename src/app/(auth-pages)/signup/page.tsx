@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { handleInputChange } from '@/common/handleInputChange'
 import InputContainer from '@/components/InputContainer'
 import Button from '@/components/Buttons'
+import GoogleButton from '@/components/Buttons/GoogleButton'
 
 const Signup = () => {
   const router = useRouter()
@@ -131,6 +132,7 @@ const Signup = () => {
           className="text-white p-2 text-center rounded-[10px] w-[201px] h-[54px] mt-4">
           Cadastrar
         </Button>
+        <GoogleButton />
       </form>
       <p className="text-center uppercase">
         já tem login?{' '}

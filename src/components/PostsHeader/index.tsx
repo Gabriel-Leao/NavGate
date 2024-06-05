@@ -6,10 +6,16 @@ import { usePathname, useRouter } from 'next/navigation'
 import Button from '@/components/Buttons'
 import Link from 'next/link'
 import Image from 'next/image'
+import { signOut } from 'next-auth/react'
 
 interface PostsHeaderProps {
   loggedIn?: boolean
   yourPosts?: boolean
+  googleAccount?: {
+    name?: string | null
+    email?: string | null
+    image?: string | null
+  } | null
 }
 
 export interface account {
@@ -19,7 +25,10 @@ export interface account {
   birth: string
 }
 
-const PostsHeader = ({ yourPosts = false }: PostsHeaderProps) => {
+const PostsHeader = ({
+  yourPosts = false,
+  googleAccount = null
+}: PostsHeaderProps) => {
   const [account, setAccount] = useState<null | account>(null)
   const router = useRouter()
   const pathName = usePathname()
@@ -30,16 +39,20 @@ const PostsHeader = ({ yourPosts = false }: PostsHeaderProps) => {
   }, [])
 
   const handleSignOut = () => {
-    window.localStorage.removeItem('account')
-    if (pathName === '/home') {
-      window.location.reload()
+    if (googleAccount) {
+      signOut({ callbackUrl: '/home' })
+    } else {
+      window.localStorage.removeItem('account')
+      if (pathName === '/home') {
+        window.location.reload()
+      }
+      router.push('/home')
     }
-    router.push('/home')
   }
 
   return (
     <div className="bg-[#182641] container mx-auto rounded-t-2xl">
-      {!account && yourPosts ? (
+      {!googleAccount && !account && yourPosts ? (
         <>
           <div className="flex justify-between items-center py-12 px-3 md:justify-around lg:justify-end md:gap-x-5">
             <Link href="/login">
@@ -69,7 +82,11 @@ const PostsHeader = ({ yourPosts = false }: PostsHeaderProps) => {
         <>
           <div className="py-12 px-3 flex justify-center">
             <Image
-              src="/profile-photo.svg"
+              src={
+                googleAccount && googleAccount.image
+                  ? googleAccount.image
+                  : '/profile-photo.svg'
+              }
               alt="foto de perfil"
               width={200}
               height={200}
@@ -79,9 +96,11 @@ const PostsHeader = ({ yourPosts = false }: PostsHeaderProps) => {
           <div className="bg-white py-6 flex justify-between px-2 md:px-10 items-center flex-col md:flex-row gap-y-8 md:gap-y-0">
             <div>
               <h2 className="text-2xl pb-2 capitalize">
-                {yourPosts && account && account.name
-                  ? account.name
-                  : 'user name'}
+                {yourPosts && googleAccount?.name
+                  ? googleAccount.name
+                  : account && account.name
+                    ? account.name
+                    : 'user name'}
               </h2>
               <p className="text-lg">000.000 seguidores</p>
             </div>

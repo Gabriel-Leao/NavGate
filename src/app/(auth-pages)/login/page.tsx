@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { handleInputChange } from '@/common/handleInputChange'
 import InputContainer from '@/components/InputContainer'
 import Button from '@/components/Buttons'
+import GoogleButton from '@/components/Buttons/GoogleButton'
 
 const Login = () => {
   const router = useRouter()
@@ -77,6 +78,7 @@ const Login = () => {
           className="p-2 text-center text-white rounded-[10px] w-[201px] h-[54px] mt-4">
           Entrar
         </Button>
+        <GoogleButton />
       </form>
       <p className="text-center uppercase">
         não tem login?{' '}

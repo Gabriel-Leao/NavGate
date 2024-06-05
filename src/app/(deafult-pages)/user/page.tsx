@@ -5,11 +5,21 @@ import PostsBody from '@/components/PostsBody'
 import Image from 'next/image'
 import Followers from '@/components/Followers'
 import { useEffect, useState } from 'react'
+import { Session } from 'next-auth'
+import { getSession } from 'next-auth/react'
 
 const Page = () => {
+  const [session, setSession] = useState<Session | null>(null)
   const [account, setAccount] = useState<null | account>(null)
 
   useEffect(() => {
+    const fetchSession = async () => {
+      const session = await getSession()
+      setSession(session)
+    }
+
+    fetchSession()
+
     const account = JSON.parse(window.localStorage.getItem('account')!)
     setAccount(account)
   }, [])
@@ -27,11 +37,11 @@ const Page = () => {
 
       <div className="lg:relative lg:top-[-100px] xl:top-[-350px] lg:mx-24 3xl:mx-0">
         <PostsHeader
-          loggedIn={true}
+          googleAccount={session?.user}
           yourPosts={true}
         />
         <div className="flex flex-col lg:flex-row container mx-auto h-screen">
-          {account ? (
+          {account || session?.user ? (
             <>
               <div className="w-full lg:w-[40%] xl:w-[50%]">
                 <Followers yourAccount={true} />
