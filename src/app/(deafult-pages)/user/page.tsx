@@ -40,7 +40,7 @@ const Page = () => {
           googleAccount={session?.user}
           yourPosts={true}
         />
-        <div className="flex flex-col lg:flex-row container mx-auto h-screen">
+        <div className="flex flex-col lg:flex-row container mx-auto">
           {account || session?.user ? (
             <>
               <div className="w-full lg:w-[40%] xl:w-[50%]">
@@ -52,7 +52,7 @@ const Page = () => {
               </div>
             </>
           ) : (
-            <h2 className="text-2xl text-center text-white py-5">
+            <h2 className="text-2xl text-center text-white py-5 h-screen">
               Tem que estar logado para acessar o seu perfil
             </h2>
           )}
