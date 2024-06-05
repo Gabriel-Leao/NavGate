@@ -13,7 +13,7 @@ const Page = () => {
   return (
     <>
       <Navbar />
-      <main className="pt-16 bg-[#0e112c]">
+      <main className="pt-16 bg-gradient-to-b from-[#0e112c] to-[#3b39a7]">
         <>
           <div className="flex justify-center pt-[30px] md:pt-[45px]">
             <Image

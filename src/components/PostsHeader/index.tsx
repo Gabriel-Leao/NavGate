@@ -1,3 +1,8 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
+
 import Button from '@/components/Buttons'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -7,13 +12,34 @@ interface PostsHeaderProps {
   yourPosts?: boolean
 }
 
-const PostsHeader = ({
-  loggedIn = false,
-  yourPosts = false
-}: PostsHeaderProps) => {
+export interface account {
+  name: string
+  email: string
+  password: string
+  birth: string
+}
+
+const PostsHeader = ({ yourPosts = false }: PostsHeaderProps) => {
+  const [account, setAccount] = useState<null | account>(null)
+  const router = useRouter()
+  const pathName = usePathname()
+
+  useEffect(() => {
+    const account = JSON.parse(window.localStorage.getItem('account')!)
+    setAccount(account)
+  }, [])
+
+  const handleSignOut = () => {
+    window.localStorage.removeItem('account')
+    if (pathName === '/home') {
+      window.location.reload()
+    }
+    router.push('/home')
+  }
+
   return (
     <div className="bg-[#182641] container mx-auto rounded-t-2xl">
-      {!loggedIn ? (
+      {!account && yourPosts ? (
         <>
           <div className="flex justify-between items-center py-12 px-3 md:justify-around lg:justify-end md:gap-x-5">
             <Link href="/login">
@@ -52,11 +78,15 @@ const PostsHeader = ({
           </div>
           <div className="bg-white py-6 flex justify-between px-2 md:px-10 items-center flex-col md:flex-row gap-y-8 md:gap-y-0">
             <div>
-              <h2 className="text-2xl pb-2">Your User Name</h2>
+              <h2 className="text-2xl pb-2 capitalize">
+                {yourPosts && account && account.name
+                  ? account.name
+                  : 'user name'}
+              </h2>
               <p className="text-lg">000.000 seguidores</p>
             </div>
             {yourPosts ? (
-              <button>
+              <button onClick={handleSignOut}>
                 <Image
                   src="/log-out.svg"
                   alt="botão de sair"

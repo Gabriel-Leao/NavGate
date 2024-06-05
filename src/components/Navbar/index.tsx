@@ -42,7 +42,7 @@ const Navbar = () => {
         </li>
 
         <li>
-          <Link href="/">
+          <Link href="/adopt">
             <Image
               src="/hands-icon.svg"
               alt=""

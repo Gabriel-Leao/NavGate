@@ -1,9 +1,19 @@
-import PostsHeader from '@/components/PostsHeader'
+'use client'
+
+import PostsHeader, { account } from '@/components/PostsHeader'
 import PostsBody from '@/components/PostsBody'
 import Image from 'next/image'
 import Followers from '@/components/Followers'
+import { useEffect, useState } from 'react'
 
 const Page = () => {
+  const [account, setAccount] = useState<null | account>(null)
+
+  useEffect(() => {
+    const account = JSON.parse(window.localStorage.getItem('account')!)
+    setAccount(account)
+  }, [])
+
   return (
     <main className="bg-[#3937a1] pb-8 lg:pb-0 pt-16">
       <Image
@@ -20,14 +30,22 @@ const Page = () => {
           loggedIn={true}
           yourPosts={true}
         />
-        <div className="flex flex-col lg:flex-row container mx-auto">
-          <div className="w-full lg:w-[40%] xl:w-[50%]">
-            <Followers yourAccount={true} />
-          </div>
+        <div className="flex flex-col lg:flex-row container mx-auto h-screen">
+          {account ? (
+            <>
+              <div className="w-full lg:w-[40%] xl:w-[50%]">
+                <Followers yourAccount={true} />
+              </div>
 
-          <div className="w-full lg:w-[60%] xl:w-[50%]">
-            <PostsBody className="lg:rounded-l-none rounded-br-2xl" />
-          </div>
+              <div className="w-full lg:w-[60%] xl:w-[50%]">
+                <PostsBody className="lg:rounded-l-none rounded-br-2xl" />
+              </div>
+            </>
+          ) : (
+            <h2 className="text-2xl text-center text-white py-5">
+              Tem que estar logado para acessar o seu perfil
+            </h2>
+          )}
         </div>
       </div>
     </main>

@@ -14,7 +14,7 @@ const Page = () => {
         priority={false}
       />
       <div className="lg:relative lg:top-[-100px] xl:top-[-350px] lg:mx-24 3xl:mx-0">
-        <PostsHeader loggedIn={false} />
+        <PostsHeader yourPosts={true} />
         <PostsBody />
       </div>
     </main>
